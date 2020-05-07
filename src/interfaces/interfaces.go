@@ -2,36 +2,46 @@ package interfaces
 
 import "fmt"
 
-type totalMoney int
-
-type incomeSources interface{
-	salaryIncome() totalMoney
-	otherIncome() totalMoney
-	displayIncome()
+type custInterface  interface{
+	changeEmpDesignationByValue(string)
+	changeEmpDesignationByRef(string)
 }
 
-func (money totalMoney) salaryIncome() totalMoney{
-
-	fmt.Println("Salary Income ", money)
-	return money + 1000
+type custDetails struct{
+	name string
+	designation string
 }
 
-func (money totalMoney) otherIncome() totalMoney{
-
-	fmt.Println("Other Income ", money)
-	return money + 2000
-}
-
-func (money totalMoney) displayIncome(){
-
-	fmt.Println("Display Income ", money)
-}
 func DemoInterface(){
-
-	var money incomeSources
-	money = totalMoney(0)
-	money = money.salaryIncome()
-	money = money.otherIncome()
-	money.displayIncome()
-
+	fmt.Println("Demo on Interface ")
+	callInterfaceByValueWithString()
+	callInterfaceByRefWithString()
 }
+func callInterfaceByValueWithString(){
+	fmt.Println("******   PART 1 ( Inteface Methods , call by value , operations on strings   **********************")
+
+	var customerInterface custInterface = &custDetails{"Ravi", "Software Engineer"}
+	fmt.Println("Before call by value ", customerInterface)
+	customerInterface.changeEmpDesignationByValue("Architect")
+	fmt.Println("After call by value - Did designation changed to Architect, NO", customerInterface)
+}
+func (e custDetails) changeEmpDesignationByValue(desig  string){
+
+	fmt.Println("Emp designation is changing to Architect: ")
+	e.designation = desig
+}
+
+func callInterfaceByRefWithString(){
+	fmt.Println("******   PART -2  Interface Methods , call by reference, operations on strings   **********************")
+
+	var customerInterface custInterface= &custDetails{"Hari", "Software Engineer"}
+	fmt.Println("Before call by value ", customerInterface)
+	customerInterface.changeEmpDesignationByRef("Architect")
+	fmt.Println("After call by value - Did designation changed to Architect, Yes", customerInterface)
+}
+func (e *custDetails) changeEmpDesignationByRef(desig  string){
+
+	fmt.Println("Emp designation is changing to Architect: ")
+	e.designation = desig
+}
+
