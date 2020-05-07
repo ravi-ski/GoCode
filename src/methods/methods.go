@@ -2,13 +2,11 @@ package methods
 
 import "fmt"
 
-/* PART -1 : Functions & Methods on String Operations */
-	/* Part - 1.1 : This section describes functions in golang based on call by value and call by reference */
-	/* Part - 1.2 : Next section describes methods in golang based on call by value and call by reference */
 
-/* PART -2 : Functions & Methods on Maps and Slices Operations */
-	/* Part - 2.1 : This section describes functions in golang based on call by value and call by reference */
-	/* Part - 2.2 : Next section describes methods in golang based on call by value and call by reference */
+	/* Part 1 shows, how to call functions using pass by value, part -2 shows how to call functions using pass by references.
+	  Part 3 shows how to use methods in case of pass by value and part 4 shows in case of pass by references. */
+
+
 
 
 type empDetails struct {
@@ -17,7 +15,7 @@ type empDetails struct {
 }
 
 func DemoMethodsAndFunctions(){
-	fmt.Println("How to use functions with pass by value:")
+	fmt.Println("Demo to show how to use functions & methods with pass by value and pass by reference:")
 	callFunctionByValueWithStrings()
 	callFunctionByPoitnerWithStrings()
 	callMethodByValueWithStrings()
@@ -25,7 +23,7 @@ func DemoMethodsAndFunctions(){
 }
 
 func callFunctionByValueWithStrings(){
-	fmt.Println("******   PART -1.1 ( Functions, call by value , operations on strings   **********************")
+	fmt.Println("******   PART -1 ( Functions, call by value , operations on strings   **********************")
 
 	empInfo := empDetails{"Ravi", "Software Engineer"}
 	fmt.Println("Before call by value ", empInfo)
@@ -41,7 +39,7 @@ func changeEmpDesignation(details empDetails){
 
 func callFunctionByPoitnerWithStrings() {
 
-	fmt.Println("******    Functions, call by reference , operations on strings   ********************** ")
+	fmt.Println("******    Part -2 Functions, call by reference , operations on strings   ********************** ")
 
 	empInfo := empDetails{"Ravi", "Software Engineer"}
 	fmt.Println("Before call by reference", empInfo)
@@ -55,16 +53,13 @@ func changeEmpDesignationByPointer(details *empDetails){
 	details.designation = "Architect"
 }
 
-type custInterface  interface{
-	//changeEmpDesignationByMethod(string)
-}
 
 type custDetails struct{
 	name string
 	designation string
 }
 func callMethodByValueWithStrings(){
-	fmt.Println("******   PART -2.1 ( Methods , call by value , operations on strings   **********************")
+	fmt.Println("******   PART -3  ( Methods , call by value , operations on strings   **********************")
 
 	var customerInterface = custDetails{"Ravi", "Software Engineer"}
 	fmt.Println("Before call by value ", customerInterface)
@@ -78,7 +73,7 @@ func (e custDetails) changeEmpDesignationMethod(desig  string){
 }
 
 func callMethodByReferenceWithStrings(){
-	fmt.Println("******   PART -2.2 ( Methods , call by reference, operations on strings   **********************")
+	fmt.Println("******   PART -4 ( Methods , call by reference, operations on strings   **********************")
 
 	var customerInterface = &custDetails{"Hari", "Software Engineer"}
 	fmt.Println("Before call by value ", customerInterface)
